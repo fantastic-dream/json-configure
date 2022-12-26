@@ -12,9 +12,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.coim/zwkang/json-configure.git"
+    "url": "git+https://github.com/zwkang-dev/json-configure.git"
   },
-  "bugs": "https://github.coim/zwkang/json-configure/issues",
+  "bugs": "https://github.com/zwkang-dev/json-configure/issues",
   "keywords": [],
   "sideEffects": false,
   "exports": {
