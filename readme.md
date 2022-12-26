@@ -1,14 +1,22 @@
-## json-configure
+# json-configure
 
-> all sync action
+> description:
 
-## usage
+sync use config file
+
+## Features
+
+- long cache file
+- sync write/read.
+
+## Try it now
 
 ```
-const jsonConfigure = require("json-configure");
+import { Configure } from 'json-configure';
 
-jsonConfigure.write('name', 'zwkang');
+const config = new Configure();
 
+config.write('name', 'zwkang');
 
 console.log(jsonConfigure.read('name'));
 // zwkang
@@ -19,8 +27,6 @@ jsonConfigure.clearCache // remove cache
 
 ```
 
----
-
 ## LICENSE
 
-[MIT](./LICENSE)
+[MIT](./LICENSE) License © 2022 [zwkang](https://github.com/zwkang)
