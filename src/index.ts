@@ -49,7 +49,7 @@ export class Configure<T extends unknownRecordable = unknownRecordable> {
   public constructor(setting?: Setting & ObjectEncodingOptions) {
     const opts = { ...defaultSetting, ...setting };
     this.filepath = path.resolve(userHome, opts.filename);
-    this.encoding = opts.encoding || 'utf-8'';
+    this.encoding = opts.encoding || 'utf-8';
     fsExtra.ensureFileSync(this.filepath);
     const Content = fsExtra
       .readFileSync(this.filepath, {
@@ -105,9 +105,7 @@ export class Configure<T extends unknownRecordable = unknownRecordable> {
 
   public all = () => {
     fsExtra.ensureFileSync(this.filepath);
-    const Content = fsExtra
-      .readFileSync(this.filepath)
-      .toString('utf-8');
+    const Content = fsExtra.readFileSync(this.filepath).toString('utf-8');
 
     this.cache = safeParse(Content, { throw: true });
     return this.cache;
