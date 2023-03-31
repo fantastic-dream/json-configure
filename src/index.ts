@@ -43,13 +43,11 @@ function merge<T extends unknownRecordable, G extends unknownRecordable>(prev: T
 
 export class Configure<T extends unknownRecordable = unknownRecordable> {
   private filepath: string;
-  private encoding: string;
   private cache: T;
 
   public constructor(setting?: Setting & ObjectEncodingOptions) {
     const opts = { ...defaultSetting, ...setting };
     this.filepath = path.resolve(userHome, opts.filename);
-    this.encoding = opts.encoding || 'utf-8';
     fsExtra.ensureFileSync(this.filepath);
     const Content = fsExtra
       .readFileSync(this.filepath, {
