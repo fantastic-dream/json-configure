@@ -81,19 +81,29 @@ export class Configure<T extends unknownRecordable = unknownRecordable> {
     return this.cache;
   }
 
-  public read(key: keyof T) {
-    return this.cache[key];
-  }
+  public del = (key: keyof T) => {
+    delete this.cache[key];
+    this.syncToFile(this.cache);
+    return this.cache;
+  };
 
-  public clear() {
+  public read = (key: keyof T) => {
+    return this.cache[key];
+  };
+
+  public clear = () => {
     fsExtra.removeSync(this.filepath);
     this.cache = {} as T;
     this.filepath = '';
-  }
+  };
 
-  public clearCache() {
+  public clearCache = () => {
     this.cache = {} as T;
-    fsExtra.writeFileSync(this.filepath, '{}');
+    fsExtra.writeFileSync(this.filepath, safeStringify(this.cache));
     return this.cache;
+  };
+
+  private syncToFile<T extends object>(data: T) {
+    fsExtra.writeFileSync(this.filepath, safeStringify(data));
   }
 }
